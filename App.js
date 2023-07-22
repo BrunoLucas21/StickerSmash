@@ -12,6 +12,7 @@ import EmojiList from './components/EmojiList';
 import EmojiSticker from './components/EmojiSticker';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { captureRef } from 'react-native-view-shot';
+import DomToImage from 'dom-to-image';
 
 const PlaceholderImage = require('./assets/images/background-image.png');
 
