@@ -16,6 +16,22 @@ import { captureRef } from 'react-native-view-shot';
 const PlaceholderImage = require('./assets/images/background-image.png');
 
 export default function App() {
+  const onSaveImageAsync = async () => {
+    try {
+      const localUri = await captureRef(imageRef, {
+        height: 440,
+        quality: 1,
+      });
+
+      await MediaLibrary.saveToLibraryAsync(localUri);
+      if (localUri) {
+        alert("Saved!");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  
   const imageRef = useRef();
 
   const [status, requestPermission] = MediaLibrary.usePermissions();
@@ -57,9 +73,6 @@ export default function App() {
     setIsModalVisible(false);
   }
 
-  const onSaveImageAsync = async () => {
-    // vamos implementar isso depois
-  }
 
   return (
     <GestureHandlerRootView style={styles.container}>
