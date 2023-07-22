@@ -7,10 +7,13 @@ import * as ImagePicker from 'expo-image-picker';
 import CircleButton from './components/CircleButton';
 import IconButton from './components/IconButton';
 import EmojiPicker from './components/EmojiPicker';
+import EmojiList from './components/EmojiList';
 
 const PlaceholderImage = require('./assets/images/background-image.png');
 
 export default function App() {
+  const [pickedEmoji, setPickedEmoji] = useState(null);
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showAppOptions, setShowAppOptions] = useState(false);
 
@@ -55,7 +58,7 @@ export default function App() {
           />
       </View>
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
-        {/* Uma lista do componente emoji estão aqui */}
+        <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
           {showAppOptions ? (
             <View style={styles.optionsContainer}>
